@@ -1,0 +1,84 @@
+---
+title: Loqate for Adobe Commerce
+description: "Get Loqate services running in Adobe Commerce in just a few minutes"
+---
+## Whats included?
+Our Adobe Commerce integration allows you to quickly and easily add loqate [address capture](/our-services/capture), [address verification](/our-services/capture), [phone validation](/our-services/phone) and [email validation](/our-services/email) validation to your Adobe Commerce store. This guide will walk you through the process of setting up Loqate services in Adobe Commerce.
+
+The integration allows you to install the loqate services in the most important places within your Adobe Commerce environment:
+
+- Store checkout pages
+- Registrayion pages
+- Your customers account area
+- Order and customer creation within the admin panel
+- Customer address import
+## Getting started
+### Prerequisites
+- For the purposes of this guide we assume you have an active Loqate account (if you don't have an account yet then [sign up for free](https://account.loqate.com/register)), and that your have [created an API key](/authentication).
+<Warning>The Adobe Commerce integration is not available via the New account experience (https://app-us.platform.loqate.com/), so if you already have an account that you log into via this URL, you'll need to create a new Classic account to use this integration.</Warning>
+- The extension is compatible with Adobe Commerce 2.4 and above.
+- The extension has been built with PHP8
+### Installation
+1. require the extension with composer
+```bash
+composer require lqt/loqate-integration
+```
+2. Run the following commands to install the extension
+```bash
+php bin/magento module:enable Loqate_ApiIntegration
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+```
+### Updating the extension
+
+You should take care when making any change to your Magento store, and always make sure you have a backup of your store before making any changes.
+
+Run the following commands to update the extension:
+```bash
+composer remove lqt/loqate-integration
+composer require lqt/loqate-integration
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
+php bin/magento cache:clean
+```
+
+<Note>If you have customised the integrations code, you'll need to port these customisations after upgrading and resolve any potential conflict.</Note>
+
+### Removing the extension
+To remove the extension, run the following commands:
+```bash
+composer remove lqt/loqate-integration
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
+php bin/magento cache:clean
+```
+
+## Configuration
+
+The configuration section for the integration can be found by navigating to Stores -> Configuration -> Loqate -> Main Settings. The following options are available.
+
+### Main Settings
+
+This is where you can enter your API key. You can also enable or disable the extension from this page by removing your key.
+
+### Address Capture
+#### Enable / Disable Address Capture
+You can enable and disable address capture on the following pages:
+- Customer account
+- Checkout
+- Admin order creation
+- Admin customer account
+#### Restrict searchable countries 
+Merchants can restrict the address results to search only within specific countries. By default, no country is selected and the integration doesn't apply any country restrictions.
+### Address Verify
+
+#### Address Quality Index
+The Address Quality Index (AQI) is a score that indicates the quality of the address. Where an address falls below this quality bar, the address is considered invalid, and the user will be prompted. Options are:
+
+- Excellent - A - Verifiable to at last premise level without changes 
+- Good - B - Verifiable to at least thoroughfare level with minor changes 
+- Average - C - Verifiable to at least locality level with moderate changes 
+- Poor - D - Only verifiable to at least locality level with more than moderate changes 
+- Bad - E (or empty) - If an address is unable to be parsed, the AQI can be empty 

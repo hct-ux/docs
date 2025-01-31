@@ -69,17 +69,18 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction", "quickstart", "authentication"]
     },
     {
-      "group": "Essentials",
+      "group": "Our Services",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "our-services/capture",
+        "our-services/verify",
+        "our-services/store-finder",
+        "our-services/phone",
+        "our-services/email",
+        "our-services/bank",
+        "our-services/geocoding"
       ]
     },
     {
