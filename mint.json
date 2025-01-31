@@ -5,7 +5,7 @@
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
-  "favicon": "https://www.loqate.com/assets/favicon/favicon-32x32.png",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
@@ -29,6 +29,24 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Release Notes",
+      "url": "release-notes",
+      "versions": [
+        {
+          "name": "English",
+          "locale": "en"
+        },
+        {
+          "name": "French",
+          "locale": "fr"
+        },
+        {
+          "name": "Spanish",
+          "locale": "es"
+        }
+      ]
     }
   ],
   "anchors": [
@@ -65,6 +83,10 @@
       ]
     },
     {
+      "group": "Release Notes",
+      "pages": ["release-notes/introduction"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
     },
@@ -73,7 +95,8 @@
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/delete",
+        "api-reference/endpoint/verify"
       ]
     }
   ],
