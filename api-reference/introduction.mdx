@@ -1,33 +1,18 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'APIs overview'
+description: 'Introduction to the Loqate APIs'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+Loqate services can be accessed securely over HTTPS. A variety of data formats can be returned, including JSON, XML and CSV, using the various endpoint options that are available (please note that we do not support API connections that use HTTP or a TLS protocol below version 1.2).
 
-## Welcome
+## Base URL
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Each API has a base URL on which the required data endpoint can be appended, such as json3.ws or xmle.ws. For SOAP, use wsdlnew.ws. See the Endpoints section within each API for a full list of data options.
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+APIs require authentication in the form of a key, which can be created by adding a service in your account. Each key has its own security settings (URL & IP restriction, usage limits), and as many keys as necessary can be set up with these restrictions. See the [Creating API Keys page](/loqate-basics/creating-api-keys/) for more information. A key must be passed to the API as a parameter in order for the request to authenticate, otherwise an error will be returned.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+## Common errors
+
+Each API has specific errors that may be returned, as well as a common set of errors relating to either account or key settings. See the [Common errors page](/api-reference/common-errors) for details.

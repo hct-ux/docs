@@ -1,0 +1,226 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI Plant Store",
+    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "license": {
+      "name": "MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.loqate.com"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/cleanse/batch": {
+      "post": {
+        "description": "Cleanse and validate a batch of addresses",
+        "requestBody": {
+          "description": "Accepts up to 100 address records and returns validated and enriched address data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "description": "The key you want to use to authenticate with the service"
+                  },
+                  "addresses": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/InputAddress"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "plant response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/Response" },
+                    { "$ref": "#/components/schemas/Error" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Match": {
+        "type": "object",
+        "properties": {
+          "Address": { "type": "string" },
+          "Address1": { "type": "string" },
+          "Address2": { "type": "string" },
+          "Address3": { "type": "string" },
+          "Address4": { "type": "string" },
+          "Address5": { "type": "string" },
+          "Address6": { "type": "string" },
+          "Address7": { "type": "string" },
+          "Address8": { "type": "string" },
+          "ID": { "type": "string" },
+          "DeliveryAddress": { "type": "string" },
+          "DeliveryAddress1": { "type": "string" },
+          "DeliveryAddress2": { "type": "string" },
+          "DeliveryAddress3": { "type": "string" },
+          "DeliveryAddress4": { "type": "string" },
+          "DeliveryAddress5": { "type": "string" },
+          "DeliveryAddress6": { "type": "string" },
+          "DeliveryAddress7": { "type": "string" },
+          "DeliveryAddress8": { "type": "string" },
+          "CountryName": { "type": "string" },
+          "ISO3166-2": { "type": "string" },
+          "ISO3166-3": { "type": "string" },
+          "ISO3166-N": { "type": "string" },
+          "SuperAdministrativeArea": { "type": "string" },
+          "AdministrativeArea": { "type": "string" },
+          "SubAdministrativeArea": { "type": "string" },
+          "Locality": { "type": "string" },
+          "DependentLocality": { "type": "string" },
+          "DoubleDependentLocality": { "type": "string" },
+          "Thoroughfare": { "type": "string" },
+          "DependentThoroughfare": { "type": "string" },
+          "Building": { "type": "string" },
+          "Premise": { "type": "string" },
+          "SubBuilding": { "type": "string" },
+          "SubBuildingFloor": { "type": "string" },
+          "PostalCode": { "type": "string" },
+          "PostalCodePrimary": { "type": "string" },
+          "PostalCodeSecondary": { "type": "string" },
+          "Organization": { "type": "string" },
+          "PostBox": { "type": "string" },
+          "AddressFormat": { "type": "string" },
+          "DeliveryAddressFormat": { "type": "string" },
+          "AVC": {
+            "type": "string"
+          },
+          "AQI": { "type": "string" },
+          "Sequence": { "type": "string" },
+          "Latitude": { "type": "string" },
+          "Longitude": { "type": "string" },
+          "GeoAccuracy": { "type": "string" },
+          "GeoDistance": { "type": "number" }
+        }
+      },
+      "Response": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/InputAddress" }
+          },
+          "matches": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Match" }
+          }
+        }
+      },
+      "InputAddress": {
+        "type": "object",
+        "properties": {
+          "Address": {
+            "type": "string",
+            "description": "This field holds the full address, correctly formatted for mailing in the relevant country, including line breaks specified using the AddressLineSeparator option."
+          },
+          "Address1": { "type": "string" },
+          "Address2": { "type": "string" },
+          "Address3": { "type": "string" },
+          "Address4": { "type": "string" },
+          "Address5": { "type": "string" },
+          "Address6": { "type": "string" },
+          "Address7": { "type": "string" },
+          "Address8": { "type": "string" },
+          "ID": {
+            "type": "string",
+            "description": "This field will be passed through to the output unchanged."
+          },
+          "DeliveryAddress": {
+            "type": "string",
+            "description": "This field holds the full address minus the Organization, Locality, AdministrativeArea hierarchy and PostalCode hierarchy fields, correctly formatted for mailing in the relevant country, including line breaks specified using the AddressLineSeparator option."
+          },
+          "DeliveryAddress1": { "type": "string" },
+          "DeliveryAddress2": { "type": "string" },
+          "DeliveryAddress3": { "type": "string" },
+          "DeliveryAddress4": { "type": "string" },
+          "DeliveryAddress5": { "type": "string" },
+          "DeliveryAddress6": { "type": "string" },
+          "DeliveryAddress7": { "type": "string" },
+          "DeliveryAddress8": { "type": "string" },
+          "Country": {
+            "type": "string",
+            "description": "ISO Country Code"
+          },
+          "SuperAdministrativeArea": { "type": "string" },
+          "AdministrativeArea": { "type": "string" },
+          "SubAdministrativeArea": { "type": "string" },
+          "Locality": { "type": "string" },
+          "DependentLocality": { "type": "string" },
+          "DoubleDependentLocality": { "type": "string" },
+          "Thoroughfare": { "type": "string" },
+          "DependentThoroughfare": { "type": "string" },
+          "Building": { "type": "string" },
+          "Premise": { "type": "string" },
+          "SubBuilding": { "type": "string" },
+          "SubBuildingFloor": { "type": "string" },
+          "PostalCode": { "type": "string" },
+          "Organization": { "type": "string" },
+          "PostBox": { "type": "string" }
+        }
+      },
+      "Error": {
+        "description": "Error response",
+        "required": ["error", "message"],
+        "type": "object",
+        "properties": {
+          "Error": {
+            "type": "string"
+          },
+          "Cause": {
+            "type": "string"
+          },
+          "Resolution": {
+            "type": "string"
+          },
+          "Id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

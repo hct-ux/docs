@@ -1,0 +1,13 @@
+---
+title: "Interactive Find"
+openapi: ""
+playground: 'interactive'
+examples: 'JSON'
+description: "Uses a text search to find addresses and places."
+---
+
+Note this does not return formatted addresses, and repeated calls to this service may be required to drill-down through results until an address ID is returned. The address ID should then be passed into the Retrieve service to obtain a fully formatted address.
+
+**This method does not consume credit.**
+
+Note: we don’t support API connections using HTTP - all calls should use HTTPS.

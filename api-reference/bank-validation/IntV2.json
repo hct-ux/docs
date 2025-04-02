@@ -1,0 +1,168 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "BankAccountValidation/Interactive/Validate",
+      "description": "Validates the bank account and sort code for any UK bank account are correct. Returns details of the holding branch, IBAN and correct BACS account details.",
+      "version": "2"
+    },
+    "servers": [
+      {
+        "url": "https://api.addressy.com"
+      }
+    ],
+    "paths": {
+      "/BankAccountValidation/Interactive/Validate/v2.00/json3.ws": {
+        "description": "Testing",
+        "parameters": [
+          {
+            "name": "Key",
+            "in": "query",
+            "required": true,
+            "description": "The key to use to authenticate to the service.",
+            "schema": {
+              "type": "string",
+              "example": "AA11-AA11-AA11-AA11"
+            }
+          },
+          {
+            "name": "AccountNumber",
+            "in": "query",
+            "required": true,
+            "description": "The bank account number to validate.",
+            "schema": {
+              "type": "string",
+              "example": "12345678"
+            }
+          },
+          {
+            "name": "SortCode",
+            "in": "query",
+            "required": true,
+            "description": "The branch sort code for the account number.",
+            "schema": {
+              "type": "string",
+              "example": "00-00-99"
+            }
+          }
+        ],
+        "get": {
+          "description": "Validates the bank account and sort code for any UK bank account are correct. Returns details of the holding branch, IBAN and correct BACS account details.",
+          "operationId": "json3.ws",
+          "responses": {
+            "200": {
+              "description": "Validates the bank account and sort code for any UK bank account are correct. Returns details of the holding branch, IBAN and correct BACS account details.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "Items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "IsCorrect": {
+                              "type": "boolean",
+                              "description": "Indicates whether the account number and sortcode are valid.",
+                              "example": "False"
+                            },
+                            "IsDirectDebitCapable": {
+                              "type": "boolean",
+                              "description": "Indicates whether the account can accept direct debits. Certain accounts (e.g. savings) will not accept direct debits.",
+                              "example": "False"
+                            },
+                            "StatusInformation": {
+                              "type": "string",
+                              "description": "More detail about the outcome of the validation process. Describes reasons validation failed or changes made to pass validation: \n\n- DetailsChanged indicates that the account and sortcode should be changed for BACs submission (check CorrectedAccountNumber and CorrectedSortCode) \n\n- CautiousOK is set where the sortcode exists but no validation rules are set for the bank (very rare).",
+                              "example": "UnknownSortCode"
+                            },
+                            "CorrectedSortCode": {
+                              "type": "string",
+                              "description": "The correct version of the SortCode. This will be 6 digits long with no hyphens. It may differ from the original sortcode.",
+                              "example": "EXAMPLE!"
+                            },
+                            "CorrectedAccountNumber": {
+                              "type": "string",
+                              "description": "The correct version of the AccountNumber. This will be 8 digits long and in the form expected for BACs submission.",
+                              "example": ""
+                            },
+                            "IBAN": {
+                              "type": "string",
+                              "description": "The correctly formatted IBAN for the account.",
+                              "example": ""
+                            },
+                            "Bank": {
+                              "type": "string",
+                              "description": "The name of the banking institution.",
+                              "example": ""
+                            },
+                            "BankBIC": {
+                              "type": "string",
+                              "description": "The banking institution's BIC, also know as the SWIFT BIC.",
+                              "example": ""
+                            },
+                            "Branch": {
+                              "type": "string",
+                              "description": "The name of the account holding branch.",
+                              "example": ""
+                            },
+                            "BranchBIC": {
+                              "type": "string",
+                              "description": "The branch's BIC.",
+                              "example": ""
+                            },
+                            "ContactAddressLine1": {
+                              "type": "string",
+                              "description": "Line 1 of the branch's contact address. NB: This is the address to be used for BACs enquiries and may be a contact centre rather than the branch's address.",
+                              "example": ""
+                            },
+                            "ContactAddressLine2": {
+                              "type": "string",
+                              "description": "Line 2 of the branch's contact address.",
+                              "example": ""
+                            },
+                            "ContactPostTown": {
+                              "type": "string",
+                              "description": "The branch's contact post town.",
+                              "example": ""
+                            },
+                            "ContactPostcode": {
+                              "type": "string",
+                              "description": "The branch's contact postcode.",
+                              "example": ""
+                            },
+                            "ContactPhone": {
+                              "type": "string",
+                              "description": "The branch's contact phone number.",
+                              "example": ""
+                            },
+                            "ContactFax": {
+                              "type": "string",
+                              "description": "The branch's contact fax number.",
+                              "example": ""
+                            },
+                            "FasterPaymentsSupported": {
+                              "type": "boolean",
+                              "description": "Indicates that the account supports the faster payments service.",
+                              "example": ""
+                            },
+                            "CHAPSSupported": {
+                              "type": "boolean",
+                              "description": "Indicates that the account supports the CHAPS service.",
+                              "example": ""
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {}
+  }

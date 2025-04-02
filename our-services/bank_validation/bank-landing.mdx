@@ -1,0 +1,69 @@
+---
+title: Bank Validation
+description: "Our Bank Validation service lets you query whether UK account number & sort code combinations are valid, or check IBANs for most European countries."
+sidebarTitle: "Overview"
+icon: 
+---
+## Overview
+Bank Validation consists of four API endpoints which you can call depending on your requirements:
+
+- **Interactive Validate (v2):** validates the bank account and sort code for any UK bank account.
+- **Batch Validate (v1):** allows for bulk validation of UK bank account and sort code details.
+- **International Interactive Validate (v1):** validates the bank account and sort code for international bank accounts (excluding the US).
+- **Interactive RetrieveBySortcode (v1):** validates using only the sort code for any UK bank account. 
+ 
+
+## Getting started
+For a broad overview of how to integrate, check out our Bank Validation setup guide:
+
+<Card title="Bank Validation Setup Guide" icon="building-columns" href="/our-services/bank_validation/setup/setup" horizontal>
+</Card>
+
+Check out the API references for each of the endpoints below:
+
+<CardGroup cols={2}>
+  <Card title="Interactive Validate" href="/api-reference/bank-validation/interactive-validate" icon="code">
+    Returns details of the holding branch, IBAN and correct BACS account details.
+  </Card>
+  <Card title="Batch Validate" href="/api-reference/bank-validation/batch-validate" icon="code">
+    Returns details of the holding branch, IBAN and correct BACS account details.
+  </Card>
+  <Card title="International Validate" href="/api-reference/bank-validation/international-interactive-validate" icon="code">
+    Returns whether an IBAN is valid or not.
+  </Card>
+    <Card title="RetrieveBySortcode" href="/api-reference/bank-validation/interactive-retrievebysortcode" icon="code">
+    Returns the details of any UK holding branch.
+  </Card>
+</CardGroup>
+
+-------------
+
+<Tabs>
+  <Tab title="Tag Setup">
+    ☝️ Welcome to the content that you can only see inside the first Tab.
+  </Tab>
+  <Tab title="SDK Setup">
+    ✌️ Here's content that's only inside the second Tab.
+  </Tab>
+  <Tab title="Integrations">
+    We have a range of integrations to help you get started on popular frameworks and platforms
+    <CardGroup cols={3}>
+        <Card title="Adobe commerce" href="/integrations/adobe-commerce" icon="tag">
+            Easily integrate our services with Adobe Commerce
+        </Card>
+        <Card title="Shopify" icon="code">
+           A full guide on how to integrate with Shopify
+        </Card>
+        <Card title="Shopify+" icon="puzzle">
+            With our Shopify+ integration you can get the most out of our services
+        </Card>
+        <Card title="Dynamics 365" href="/api-reference/endpoint/verify" icon="chart-network">
+            Leverage loqate for Dynamics 365
+        </Card>
+        </CardGroup>
+  </Tab>
+</Tabs>
+
+## Try it out
+You can try a working demo on our [demo page](https://www.loqate.com/en-gb/demos/bank/).
+
